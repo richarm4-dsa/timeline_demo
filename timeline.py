@@ -1,17 +1,19 @@
 import streamlit as st
-from streamlit_timeline import st_timeline
+import pandas as pd
+import plotly.express as px
 
-st.set_page_config(layout="wide")
+st.title("Dynamic Plotly Timeline")
 
-items = [
-    {"id": 1, "content": "2022-10-20", "start": "2022-10-20"},
-    {"id": 2, "content": "2022-10-09", "start": "2022-10-09"},
-    {"id": 3, "content": "2022-10-18", "start": "2022-10-18"},
-    {"id": 4, "content": "2022-10-16", "start": "2022-10-16"},
-    {"id": 5, "content": "2022-10-25", "start": "2022-10-25"},
-    {"id": 6, "content": "2022-10-27", "start": "2022-10-27"},
-]
+# Prepare tabular timeline records
+df = pd.DataFrame([
+    dict(Task="Phase 1", Start='2026-01-01', End='2026-02-28'),
+    dict(Task="Phase 2", Start='2026-03-01', End='2026-05-15'),
+    dict(Task="Review", Start='2026-05-16', End='2026-06-20')
+])
 
-timeline = st_timeline(items, groups=[], options={}, height="300px")
-st.subheader("Selected item")
-st.write(timeline)
+# Generate a horizontal timeline chart
+fig = px.timeline(df, x_start="Start", x_end="End", y="Task", color="Task")
+fig.update_yaxis(autorange="reversed") 
+
+# Output chart to interface
+st.plotly_chart(fig, use_container_width=True)
