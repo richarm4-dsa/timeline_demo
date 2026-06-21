@@ -13,7 +13,7 @@ df = pd.DataFrame([
 
 # Generate a horizontal timeline chart
 fig = px.timeline(df, x_start="Start", x_end="End", y="Task", color="Task")
-fig.update_yaxis(autorange="reversed") 
+fig.update_yaxes(autorange="reversed") 
 
 # Output chart to interface
 st.plotly_chart(fig, use_container_width=True)
