@@ -1,3 +1,4 @@
 streamlit
 streamlit_timeline
 streamlit-timeline
+pkg_resources
