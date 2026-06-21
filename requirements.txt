@@ -1,4 +1,2 @@
 streamlit
-streamlit_timeline
-streamlit-timeline
-pkg_resources
+streamlit-vis-timeline>0.2.0
